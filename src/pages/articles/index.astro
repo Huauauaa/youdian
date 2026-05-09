@@ -1,0 +1,217 @@
+---
+import { articleSections, articles } from "../../data/articles";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="icon" href={`${base}favicon.ico`} />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="游殿村故事的文章目录，按村庄档案、老房子与旧街、人和日子整理。"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>文章目录 | 游殿村故事</title>
+	</head>
+	<body>
+		<main class="catalog-shell">
+			<nav class="top-nav" aria-label="目录导航">
+				<a href={base}>← 返回首页</a>
+				<span>{articles.length} 篇文章</span>
+			</nav>
+
+			<header class="page-header">
+				<p class="eyebrow">Article Directory</p>
+				<h1>游殿村故事目录</h1>
+				<p>
+					这些文章先用标题和简介占位，方便后续把采访、资料、回忆和照片逐步填进来。
+				</p>
+			</header>
+
+			<div class="sections">
+				{articleSections.map((section) => (
+					<section class="directory-section" aria-labelledby={`catalog-${section.title}`}>
+						<div class="section-copy">
+							<h2 id={`catalog-${section.title}`}>{section.title}</h2>
+							<p>{section.description}</p>
+						</div>
+						<div class="articles">
+							{section.articles.map((article) => (
+								<a class="article-card" href={`${base}${article.href}`}>
+									<span>{article.category}</span>
+									<strong>{article.title}</strong>
+									<small>{article.description}</small>
+									<em>{article.status}</em>
+								</a>
+							))}
+						</div>
+					</section>
+				))}
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	:root {
+		color: #172033;
+		background: #fffaf0;
+		font-family:
+			Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui,
+			sans-serif;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		background:
+			radial-gradient(circle at top left, rgba(214, 158, 46, 0.16), transparent 30rem),
+			linear-gradient(180deg, #fffaf0 0%, #f8fafc 100%);
+	}
+
+	.catalog-shell {
+		box-sizing: border-box;
+		width: min(100%, 68rem);
+		margin: 0 auto;
+		padding: 3rem 1.25rem 5rem;
+	}
+
+	.top-nav {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 4rem;
+	}
+
+	.top-nav a {
+		color: #b45309;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.top-nav a:hover,
+	.top-nav a:focus-visible {
+		text-decoration: underline;
+	}
+
+	.top-nav span {
+		color: #6b7280;
+		font-weight: 700;
+	}
+
+	.page-header {
+		max-width: 48rem;
+		margin-bottom: 3rem;
+	}
+
+	.eyebrow,
+	.article-card span {
+		margin: 0 0 1rem;
+		color: #b45309;
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		line-height: 1.1;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 8vw, 5rem);
+	}
+
+	h2 {
+		font-size: 1.55rem;
+	}
+
+	.page-header p,
+	.section-copy p {
+		color: #465367;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	.sections {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.directory-section {
+		display: grid;
+		grid-template-columns: minmax(12rem, 18rem) 1fr;
+		gap: 1.25rem;
+		padding: 1.25rem;
+		border: 1px solid rgba(23, 32, 51, 0.1);
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.62);
+		box-shadow: 0 1rem 3rem rgba(23, 32, 51, 0.06);
+	}
+
+	.articles {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.article-card {
+		display: grid;
+		gap: 0.7rem;
+		padding: 1.2rem;
+		border: 1px solid rgba(23, 32, 51, 0.12);
+		border-radius: 1.2rem;
+		background: rgba(255, 255, 255, 0.78);
+		color: inherit;
+		text-decoration: none;
+		transition:
+			transform 160ms ease,
+			box-shadow 160ms ease;
+	}
+
+	.article-card:hover,
+	.article-card:focus-visible {
+		transform: translateY(-0.15rem);
+		box-shadow: 0 1.25rem 3rem rgba(23, 32, 51, 0.14);
+	}
+
+	.article-card span {
+		margin: 0;
+	}
+
+	.article-card strong {
+		font-size: 1.2rem;
+	}
+
+	.article-card small {
+		color: #465367;
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	.article-card em {
+		width: fit-content;
+		padding: 0.25rem 0.6rem;
+		border-radius: 999px;
+		background: #fff7ed;
+		color: #9a3412;
+		font-size: 0.8rem;
+		font-style: normal;
+		font-weight: 700;
+	}
+
+	@media (max-width: 760px) {
+		.directory-section,
+		.articles {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
