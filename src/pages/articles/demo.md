@@ -5,8 +5,6 @@ description: "用一篇短文展示 Youdian 站点的文章页面效果。"
 pubDate: "2026-05-09"
 ---
 
-# 有点：一篇 Demo 文章
-
 欢迎来到 Youdian 的第一篇示例文章。这里用一段轻量的内容展示
 Astro Markdown 页面如何作为文章发布，并作为后续内容样式和信息结构
 的起点。
