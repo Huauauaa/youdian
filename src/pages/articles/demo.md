@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/ArticleLayout.astro
 title: "有点：一篇 Demo 文章"
 description: "用一篇短文展示 Youdian 站点的文章页面效果。"
 pubDate: "2026-05-09"
