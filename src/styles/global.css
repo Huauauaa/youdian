@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+	--color-youdian-ink: #172033;
+	--color-youdian-muted: #465367;
+	--color-youdian-paper: #fffaf0;
+	--color-youdian-accent: #b45309;
+	--color-youdian-rust: #9a3412;
+}
