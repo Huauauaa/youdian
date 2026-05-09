@@ -8,11 +8,11 @@ const description = frontmatter.description ?? "游殿村故事文章";
 const category = frontmatter.category ?? "游殿村故事";
 const status = frontmatter.status ?? null;
 const pageBackgroundClass =
-	"min-h-screen bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.2),transparent_30rem),linear-gradient(180deg,#fffaf0_0%,#f8fafc_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const backLinkClass =
 	"inline-flex font-bold text-youdian-accent no-underline hover:underline focus-visible:underline";
 const badgeClass =
-	"rounded-full bg-orange-50 px-[0.65rem] py-1 text-[0.92rem] font-bold text-gray-500";
+	"status-badge font-bold text-gray-500";
 const publishedDate = frontmatter.pubDate
 	? new Intl.DateTimeFormat("zh-CN", { dateStyle: "long" }).format(
 			new Date(frontmatter.pubDate),
@@ -52,9 +52,7 @@ const publishedDate = frontmatter.pubDate
 						</p>
 					)}
 				</header>
-				<div
-					class="mt-8 text-[1.05rem] leading-[1.85] text-[#2f3a4c] [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:text-youdian-ink [&_p]:mt-0 [&_p]:mb-5 [&_ul]:mt-0 [&_ul]:mb-6 [&_ul]:pl-[1.4rem] [&_li+li]:mt-2"
-				>
+				<div class="prose mt-8">
 					{status === "待补充" && (
 						<p class="rounded-2xl border border-dashed border-youdian-accent/35 bg-orange-50 px-[1.1rem] py-4 text-youdian-rust">
 							这篇文章的正文还在整理中，后续会继续补充。

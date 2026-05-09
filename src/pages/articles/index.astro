@@ -4,11 +4,11 @@ import "../../styles/global.css";
 
 const base = import.meta.env.BASE_URL;
 const pageBackgroundClass =
-	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(214,158,46,0.16),transparent_30rem),linear-gradient(180deg,#fffaf0_0%,#f8fafc_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const eyebrowClass =
-	"mb-4 text-[0.82rem] font-extrabold uppercase tracking-[0.12em] text-youdian-accent";
+	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-accent";
 const articleCardClass =
-	"grid gap-[0.7rem] rounded-[1.2rem] border border-youdian-ink/10 bg-white/80 p-[1.2rem] text-inherit no-underline transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_1.25rem_3rem_rgba(23,32,51,0.14)] focus-visible:-translate-y-0.5 focus-visible:shadow-[0_1.25rem_3rem_rgba(23,32,51,0.14)]";
+	"glass-card grid gap-[0.7rem] rounded-[1.2rem] p-[1.2rem] text-inherit no-underline hover:-translate-y-0.5 focus-visible:-translate-y-0.5";
 ---
 
 <html lang="zh-CN">
@@ -69,7 +69,7 @@ const articleCardClass =
 									<small class="text-[0.95rem] leading-[1.65] text-youdian-muted">
 										{article.description}
 									</small>
-									<em class="w-fit rounded-full bg-orange-50 px-2.5 py-1 text-[0.8rem] font-bold not-italic text-youdian-rust">
+									<em class="status-badge not-italic">
 										{article.status}
 									</em>
 								</a>
