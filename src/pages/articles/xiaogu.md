@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/ArticleLayout.astro
-title: "小姑"
+title: "女中豪杰"
 description: "写小姑从自己改名字到追回被偷的钱，那股有主意、有胆量又有分寸的劲儿。"
 category: "人和日子"
 status: "已发布"
