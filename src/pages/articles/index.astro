@@ -4,11 +4,11 @@ import "../../styles/global.css";
 
 const base = import.meta.env.BASE_URL;
 const pageBackgroundClass =
-	"min-h-screen bg-[linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(66,184,131,0.14),transparent_30rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const eyebrowClass =
-	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-accent";
+	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-leaf-dark";
 const articleCardClass =
-	"glass-card grid gap-[0.7rem] rounded-[1.2rem] p-[1.2rem] text-inherit no-underline hover:-translate-y-0.5 focus-visible:-translate-y-0.5";
+	"glass-card grid gap-[0.8rem] rounded-[1.4rem] p-5 text-inherit no-underline";
 ---
 
 <html lang="zh-CN">
@@ -19,38 +19,38 @@ const articleCardClass =
 		<meta name="viewport" content="width=device-width" />
 		<meta
 			name="description"
-			content="游殿村故事的文章目录，按村庄档案、老房子与旧街、人和日子整理。"
+			content="游殿村故事的文章目录，整理已经写好的村庄故事。"
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>文章目录 | 游殿村故事</title>
 	</head>
 	<body class={pageBackgroundClass}>
-		<main class="mx-auto box-border w-full max-w-[68rem] px-5 pt-12 pb-20">
+		<main class="mx-auto box-border w-full max-w-[64rem] px-5 pt-5 pb-16">
 			<nav
-				class="mb-16 flex flex-wrap items-center justify-between gap-4"
+				class="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-youdian-ink/10 py-4"
 				aria-label="目录导航"
 			>
 				<a
-					class="font-bold text-youdian-accent no-underline hover:underline focus-visible:underline"
+					class="font-bold text-youdian-leaf-dark no-underline transition hover:text-youdian-ink focus-visible:text-youdian-ink"
 					href={base}
 				>
 					← 返回首页
 				</a>
-				<span class="font-bold text-gray-500">{articles.length} 篇文章</span>
+				<span class="rounded-full bg-youdian-mint px-3 py-1 text-sm font-bold text-youdian-leaf-dark">{articles.length} 篇文章</span>
 			</nav>
 
-			<header class="mb-12 max-w-[48rem]">
+			<header class="mx-auto mb-12 grid max-w-[46rem] justify-items-center text-center">
 				<p class={eyebrowClass}>Article Directory</p>
-				<h1 class="m-0 text-[clamp(2.5rem,8vw,5rem)] leading-[1.1]">游殿村故事目录</h1>
-				<p class="text-[1.05rem] leading-[1.8] text-youdian-muted">
-					这些文章先用标题和简介占位，方便后续把采访、资料、回忆和照片逐步填进来。
+				<h1 class="m-0 text-[clamp(2.4rem,8vw,4.8rem)] font-extrabold leading-[1.04] tracking-[-0.05em]">游殿村故事目录</h1>
+				<p class="max-w-[34rem] text-[1.05rem] leading-[1.8] text-youdian-muted">
+					这里只放已经写好的文章。列表保持克制，方便直接进入阅读。
 				</p>
 			</header>
 
-			<div class="grid gap-5">
+			<div class="grid gap-4">
 				{articleSections.map((section) => (
 					<section
-						class="grid gap-5 rounded-3xl border border-youdian-ink/10 bg-white/60 p-5 shadow-[0_1rem_3rem_rgba(23,32,51,0.06)] md:grid-cols-[minmax(12rem,18rem)_1fr]"
+						class="grid gap-5 rounded-[1.6rem] border border-youdian-ink/10 bg-white/60 p-5 shadow-[0_1rem_3rem_rgba(23,32,51,0.06)] md:grid-cols-[minmax(10rem,15rem)_1fr]"
 						aria-labelledby={`catalog-${section.title}`}
 					>
 						<div>
@@ -64,8 +64,11 @@ const articleCardClass =
 						<div class="grid gap-4 lg:grid-cols-2">
 							{section.articles.map((article) => (
 								<a class={articleCardClass} href={`${base}${article.href}`}>
-									<span class={`${eyebrowClass} m-0`}>{article.category}</span>
-									<strong class="text-[1.2rem]">{article.title}</strong>
+									<div class="flex items-center justify-between gap-3">
+										<span class={`${eyebrowClass} m-0`}>{article.category}</span>
+										<span class="grid h-8 w-8 place-items-center rounded-full bg-youdian-mint text-youdian-leaf-dark">→</span>
+									</div>
+									<strong class="text-[1.25rem] leading-[1.25]">{article.title}</strong>
 									<small class="text-[0.95rem] leading-[1.65] text-youdian-muted">
 										{article.description}
 									</small>

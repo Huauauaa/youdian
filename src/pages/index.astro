@@ -4,27 +4,36 @@ import "../styles/global.css";
 
 const base = import.meta.env.BASE_URL;
 const pageBackgroundClass =
-	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(214,158,46,0.12),transparent_36rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(66,184,131,0.16),transparent_30rem),radial-gradient(circle_at_top_right,rgba(180,83,9,0.09),transparent_28rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const eyebrowClass =
-	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-accent";
+	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-leaf-dark";
 const kickerClass =
-	"text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-youdian-accent";
+	"text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-youdian-leaf-dark";
 const glassCardClass =
-	"glass-card grid gap-3 rounded-[1.25rem] p-5";
+	"glass-card grid gap-3 rounded-[1.35rem] p-5";
 const articleCardClass =
-	`${glassCardClass} text-inherit no-underline hover:-translate-y-0.5 focus-visible:-translate-y-0.5`;
-const highlights = [
+	`${glassCardClass} text-inherit no-underline`;
+const publishedArticles = articles.filter((article) => article.status === "已发布");
+const featuredArticles = publishedArticles.length > 0 ? publishedArticles : articles.slice(0, 2);
+const primaryArticle = featuredArticles[0];
+const featureCards = [
 	{
-		label: "村庄档案",
-		text: "村名、方位、旧地名和重要地点，先搭出写作的骨架。",
+		label: "Story",
+		title: "从一篇真实故事开始",
+		description: primaryArticle.description,
+		href: `${base}${primaryArticle.href}`,
 	},
 	{
-		label: "旧街旧物",
-		text: "老宅、院落、街巷和公共空间，记录村里还能被看见的痕迹。",
+		label: "Directory",
+		title: "只保留已写好的文章",
+		description: `${articleSections.length} 个栏目，${articles.length} 篇已整理文章，目录保持清楚克制。`,
+		href: `${base}articles/`,
 	},
 	{
-		label: "人和日子",
-		text: "长辈、邻里、农事和节令，把游殿村写成一个有生活气息的地方。",
+		label: "Interactive",
+		title: "用互动卡片整理线索",
+		description: "像文档站的演示区一样，把村庄主题和日常片段做成可点选的轻量页面。",
+		href: `${base}react/`,
 	},
 ];
 ---
@@ -43,27 +52,24 @@ const highlights = [
 		<title>游殿村故事</title>
 	</head>
 	<body class={pageBackgroundClass}>
-		<main class="mx-auto box-border w-full max-w-[74rem] px-5 pt-8 pb-20">
+		<main class="mx-auto box-border w-full max-w-[68rem] px-5 pt-5 pb-16">
 			<nav
-				class="mb-16 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"
+				class="mb-12 flex flex-col items-start justify-between gap-4 border-b border-youdian-ink/10 py-4 sm:flex-row sm:items-center"
 				aria-label="主导航"
 			>
-				<a class="text-[1.05rem] font-bold text-inherit no-underline" href={base}>游殿村故事</a>
-				<div class="flex flex-wrap gap-[0.9rem] text-[0.95rem] text-youdian-muted">
+				<a class="inline-flex items-center gap-2 text-[1.05rem] font-extrabold tracking-[-0.01em] text-inherit no-underline" href={base}>
+					<span class="h-3 w-3 rounded-full bg-youdian-leaf shadow-[0_0_0_0.35rem_rgba(66,184,131,0.14)]"></span>
+					游殿村故事
+				</a>
+				<div class="flex flex-wrap gap-5 text-[0.95rem] text-youdian-muted">
 					<a
-						class="font-bold text-inherit no-underline hover:text-youdian-accent focus-visible:text-youdian-accent"
-						href="#catalog"
-					>
-						首页目录
-					</a>
-					<a
-						class="font-bold text-inherit no-underline hover:text-youdian-accent focus-visible:text-youdian-accent"
+						class="font-bold text-inherit no-underline transition hover:text-youdian-leaf-dark focus-visible:text-youdian-leaf-dark"
 						href={`${base}articles/`}
 					>
 						文章目录
 					</a>
 					<a
-						class="font-bold text-inherit no-underline hover:text-youdian-accent focus-visible:text-youdian-accent"
+						class="font-bold text-inherit no-underline transition hover:text-youdian-leaf-dark focus-visible:text-youdian-leaf-dark"
 						href={`${base}react/`}
 					>
 						React 互动页
@@ -72,92 +78,47 @@ const highlights = [
 			</nav>
 
 			<section
-				class="grid items-end gap-[clamp(2rem,6vw,5rem)] pb-16 md:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)]"
+				class="mx-auto grid max-w-[52rem] justify-items-center text-center"
 				aria-labelledby="hero-title"
 			>
-				<div>
-					<p class={eyebrowClass}>Youdian Village Stories</p>
-					<h1 id="hero-title" class="m-0 max-w-[12ch] text-[clamp(2.7rem,8vw,5.8rem)] leading-[1.05]">
-						我住在游殿村，想把这里慢慢写下来
-					</h1>
-					<p class="my-6 max-w-[38rem] text-[1.15rem] leading-[1.8] text-youdian-muted">
-						这个站点会收集关于游殿村的故事：村名的来处、街巷和老房子、
-						家人邻里的记忆，还有一年四季里的日常生活。
-					</p>
-					<div class="flex flex-wrap gap-[0.85rem]">
-						<a
-							class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink bg-youdian-ink px-[1.1rem] font-bold text-youdian-paper no-underline"
-							href={`${base}articles/`}
-						>
-							查看文章目录
-						</a>
-						<a
-							class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink bg-white/55 px-[1.1rem] font-bold text-youdian-ink no-underline"
-							href="#catalog"
-						>
-							浏览写作结构
-						</a>
-					</div>
-				</div>
-				<div
-					class="grid gap-[0.65rem] rounded-3xl border border-youdian-ink/10 bg-white/70 p-6 shadow-[0_1rem_3rem_rgba(23,32,51,0.08)]"
-					aria-label="项目概览"
-				>
-					<span class={kickerClass}>项目结构</span>
-					<strong class="text-[clamp(2rem,5vw,3.5rem)] leading-none">{articleSections.length} 个栏目</strong>
-					<span>{articles.length} 篇占位文章</span>
+				<p class={eyebrowClass}>Youdian Village Stories</p>
+				<h1 id="hero-title" class="m-0 max-w-[14ch] text-[clamp(2.8rem,9vw,5.8rem)] font-extrabold leading-[1.02] tracking-[-0.06em]">
+					把游殿村的故事慢慢写下来
+				</h1>
+				<p class="my-6 max-w-[38rem] text-[1.12rem] leading-[1.8] text-youdian-muted">
+					页面只保留最重要的入口：读故事、看目录、试试互动页。
+				</p>
+				<div class="flex flex-wrap justify-center gap-3">
+					<a
+						class="inline-flex min-h-11 items-center justify-center rounded-full bg-youdian-leaf px-[1.2rem] font-bold text-white no-underline shadow-[0_0.75rem_1.8rem_rgba(66,184,131,0.22)] transition hover:-translate-y-0.5 hover:bg-youdian-leaf-dark focus-visible:-translate-y-0.5"
+						href={`${base}${primaryArticle.href}`}
+					>
+						开始阅读
+					</a>
+					<a
+						class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink/12 bg-white/75 px-[1.2rem] font-bold text-youdian-ink no-underline transition hover:-translate-y-0.5 hover:border-youdian-leaf focus-visible:-translate-y-0.5"
+						href={`${base}articles/`}
+					>
+						文章目录
+					</a>
 				</div>
 			</section>
 
-			<section class="mb-16 grid gap-4 md:grid-cols-3" aria-label="首页结构">
-				{highlights.map((item) => (
-					<article class={glassCardClass}>
-						<span class={kickerClass}>{item.label}</span>
-						<p class="m-0 leading-[1.75] text-youdian-muted">{item.text}</p>
-					</article>
+			<section class="grid gap-4 pt-14 md:grid-cols-3" aria-label="页面入口">
+				{featureCards.map((card) => (
+					<a class={articleCardClass} href={card.href}>
+						<div class="grid gap-4">
+							<div class="flex items-center justify-between gap-3">
+								<span class={kickerClass}>{card.label}</span>
+								<span class="grid h-8 w-8 place-items-center rounded-full bg-youdian-mint text-youdian-leaf-dark">→</span>
+							</div>
+							<strong class="text-[1.25rem] leading-[1.25]">{card.title}</strong>
+							<small class="text-[0.95rem] leading-[1.65] text-youdian-muted">
+								{card.description}
+							</small>
+						</div>
+					</a>
 				))}
-			</section>
-
-			<section class="grid gap-8" id="catalog" aria-labelledby="catalog-title">
-				<div class="max-w-[42rem]">
-					<p class={eyebrowClass}>Directory</p>
-					<h2 id="catalog-title" class="m-0 text-[clamp(2rem,5vw,3.2rem)] leading-[1.1]">
-						故事目录结构
-					</h2>
-					<p class="leading-[1.8] text-youdian-muted">
-						先用栏目搭起写作框架，后续可以把采访、资料和回忆逐篇补进来。
-					</p>
-				</div>
-
-				<div class="grid gap-5">
-					{articleSections.map((section) => (
-						<section
-							class="grid gap-5 rounded-3xl border border-youdian-ink/10 bg-white/50 p-5 md:grid-cols-[minmax(12rem,18rem)_1fr]"
-							aria-labelledby={`section-${section.title}`}
-						>
-							<div>
-								<h3 id={`section-${section.title}`} class="m-0 text-[1.35rem]">
-									{section.title}
-								</h3>
-								<p class="leading-[1.8] text-youdian-muted">{section.description}</p>
-							</div>
-							<div class="grid gap-4 lg:grid-cols-2">
-								{section.articles.map((article) => (
-									<a class={articleCardClass} href={`${base}${article.href}`}>
-										<span class={kickerClass}>{article.category}</span>
-										<strong class="text-xl">{article.title}</strong>
-										<small class="text-[0.95rem] leading-[1.65] text-youdian-muted">
-											{article.description}
-										</small>
-										<em class="status-badge not-italic">
-											{article.status}
-										</em>
-									</a>
-								))}
-							</div>
-						</section>
-					))}
-				</div>
 			</section>
 		</main>
 	</body>
