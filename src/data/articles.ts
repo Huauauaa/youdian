@@ -65,6 +65,14 @@ export const articleSections: ArticleSection[] = [
 		description: "把家人、邻里、农事、节令和日常生活慢慢写成村庄的故事。",
 		articles: [
 			{
+				title: "小姑",
+				description: "写小姑从自己改名字到追回被偷的钱，那股有主意、有胆量又有分寸的劲儿。",
+				href: "articles/xiaogu/",
+				category: "人和日子",
+				status: "已发布",
+				pubDate: "2026-05-11",
+			},
+			{
 				title: "家里的长辈们",
 				description: "预留给长辈讲述、家族记忆和口述史的文章。",
 				href: "articles/family-elders/",
