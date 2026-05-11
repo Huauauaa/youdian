@@ -1,0 +1,26 @@
+---
+import VueStoryPage from "../components/VueStoryPage.vue";
+import "../styles/global.css";
+
+const base = import.meta.env.BASE_URL;
+const pageBackgroundClass =
+	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(159,18,57,0.1),transparent_32rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+---
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="icon" href={`${base}favicon.ico`} />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="游殿村故事的 Vue 示例页面，用响应式列表整理村庄日常时刻。"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Vue 页面 | 游殿村故事</title>
+	</head>
+	<body class={pageBackgroundClass}>
+		<VueStoryPage client:load base={base} />
+	</body>
+</html>
