@@ -1,6 +1,7 @@
 # youdian
 
-Astro project configured for GitHub Pages.
+Astro project configured for GitHub Pages. The interactive UI is standardized on
+React components styled with TailwindCSS.
 
 ## Project Structure
 
@@ -8,8 +9,14 @@ Astro project configured for GitHub Pages.
 /
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/
+│   │   └── ReactStoryPage.jsx
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── react.astro
+│   │   └── articles/
+│   └── styles/
+│       └── global.css
 ├── astro.config.mjs
 └── package.json
 ```
@@ -17,6 +24,9 @@ Astro project configured for GitHub Pages.
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
 Any static assets, like images, can be placed in the `public/` directory.
+
+React components live in `src/components/` and use TailwindCSS utility classes
+from `src/styles/global.css`.
 
 ## Commands
 
