@@ -1,0 +1,26 @@
+---
+import ReactStoryPage from "../components/ReactStoryPage.jsx";
+import "../styles/global.css";
+
+const base = import.meta.env.BASE_URL;
+const pageBackgroundClass =
+	"min-h-screen bg-[radial-gradient(circle_at_top_right,rgba(180,83,9,0.13),transparent_34rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+---
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="icon" href={`${base}favicon.ico`} />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="游殿村故事的 React 示例页面，用互动卡片整理村庄记忆主题。"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>React 页面 | 游殿村故事</title>
+	</head>
+	<body class={pageBackgroundClass}>
+		<ReactStoryPage client:load base={base} />
+	</body>
+</html>
