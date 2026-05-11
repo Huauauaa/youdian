@@ -53,11 +53,6 @@ const publishedDate = frontmatter.pubDate
 					)}
 				</header>
 				<div class="prose mt-8">
-					{status === "待补充" && (
-						<p class="rounded-2xl border border-dashed border-youdian-accent/35 bg-orange-50 px-[1.1rem] py-4 text-youdian-rust">
-							这篇文章的正文还在整理中，后续会继续补充。
-						</p>
-					)}
 					<slot />
 				</div>
 			</article>
