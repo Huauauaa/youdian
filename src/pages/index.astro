@@ -4,15 +4,15 @@ import "../styles/global.css";
 
 const base = import.meta.env.BASE_URL;
 const pageBackgroundClass =
-	"min-h-screen bg-[linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(180,83,9,0.12),transparent_28rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const eyebrowClass =
 	"mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-accent";
 const kickerClass =
 	"text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-youdian-accent";
 const glassCardClass =
-	"glass-card grid gap-3 rounded-[1.25rem] p-5";
+	"glass-card grid gap-3 rounded-[1.5rem] p-5";
 const articleCardClass =
-	`${glassCardClass} text-inherit no-underline hover:-translate-y-0.5 focus-visible:-translate-y-0.5`;
+	`${glassCardClass} text-inherit no-underline`;
 const publishedArticles = articles.filter((article) => article.status === "已发布");
 const featuredArticles = publishedArticles.length > 0 ? publishedArticles : articles.slice(0, 2);
 const primaryArticle = featuredArticles[0];
@@ -32,21 +32,21 @@ const primaryArticle = featuredArticles[0];
 		<title>游殿村故事</title>
 	</head>
 	<body class={pageBackgroundClass}>
-		<main class="mx-auto box-border w-full max-w-[62rem] px-5 pt-8 pb-16">
+		<main class="mx-auto box-border w-full max-w-[62rem] px-5 pt-7 pb-16">
 			<nav
-				class="mb-14 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"
+				class="mb-10 flex flex-col items-start justify-between gap-4 rounded-full border border-youdian-ink/10 bg-white/55 px-4 py-3 shadow-[0_0.75rem_2rem_rgba(23,32,51,0.05)] backdrop-blur sm:flex-row sm:items-center"
 				aria-label="主导航"
 			>
-				<a class="text-[1.05rem] font-bold text-inherit no-underline" href={base}>游殿村故事</a>
+				<a class="text-[1.05rem] font-extrabold tracking-[-0.01em] text-inherit no-underline" href={base}>游殿村故事</a>
 				<div class="flex flex-wrap gap-[0.9rem] text-[0.95rem] text-youdian-muted">
 					<a
-						class="font-bold text-inherit no-underline hover:text-youdian-accent focus-visible:text-youdian-accent"
+						class="font-bold text-inherit no-underline transition hover:text-youdian-accent focus-visible:text-youdian-accent"
 						href={`${base}articles/`}
 					>
 						文章目录
 					</a>
 					<a
-						class="font-bold text-inherit no-underline hover:text-youdian-accent focus-visible:text-youdian-accent"
+						class="font-bold text-inherit no-underline transition hover:text-youdian-accent focus-visible:text-youdian-accent"
 						href={`${base}react/`}
 					>
 						React 互动页
@@ -55,36 +55,43 @@ const primaryArticle = featuredArticles[0];
 			</nav>
 
 			<section
-				class="grid gap-6 border-b border-youdian-ink/10 pb-12"
+				class="rounded-[2rem] border border-youdian-ink/10 bg-white/70 p-[clamp(1.4rem,5vw,3.5rem)] shadow-[0_1.5rem_4rem_rgba(23,32,51,0.08)]"
 				aria-labelledby="hero-title"
 			>
-				<div>
-					<p class={eyebrowClass}>Youdian Village Stories</p>
-					<h1 id="hero-title" class="m-0 max-w-[13ch] text-[clamp(2.6rem,8vw,5rem)] leading-[1.08]">
-						我住在游殿村，想把这里慢慢写下来
-					</h1>
-					<p class="my-6 max-w-[34rem] text-[1.1rem] leading-[1.8] text-youdian-muted">
-						这里先放几篇关于村庄、家人和日常生活的文字，内容会慢慢补齐。
-					</p>
-					<div class="flex flex-wrap gap-[0.85rem]">
-						<a
-							class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink bg-youdian-ink px-[1.1rem] font-bold text-youdian-paper no-underline"
-							href={`${base}articles/`}
-						>
-							查看文章目录
-						</a>
-						<a
-							class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink bg-white/55 px-[1.1rem] font-bold text-youdian-ink no-underline"
-							href={`${base}${primaryArticle.href}`}
-						>
-							读最新文章
-						</a>
+				<div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_14rem] md:items-end">
+					<div>
+						<p class={eyebrowClass}>Youdian Village Stories</p>
+						<h1 id="hero-title" class="m-0 max-w-[13ch] text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-[1.06] tracking-[-0.04em]">
+							我住在游殿村，想把这里慢慢写下来
+						</h1>
+						<p class="my-6 max-w-[34rem] text-[1.1rem] leading-[1.8] text-youdian-muted">
+							这里先放真实写下来的故事。少一点入口，多一点安静，让阅读从一篇文章开始。
+						</p>
+						<div class="flex flex-wrap gap-[0.85rem]">
+							<a
+								class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink bg-youdian-ink px-[1.15rem] font-bold text-youdian-paper no-underline shadow-[0_0.75rem_1.8rem_rgba(23,32,51,0.14)] transition hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+								href={`${base}articles/`}
+							>
+								查看文章目录
+							</a>
+							<a
+								class="inline-flex min-h-11 items-center justify-center rounded-full border border-youdian-ink/15 bg-white/70 px-[1.15rem] font-bold text-youdian-ink no-underline transition hover:-translate-y-0.5 hover:border-youdian-accent focus-visible:-translate-y-0.5"
+								href={`${base}${primaryArticle.href}`}
+							>
+								读最新文章
+							</a>
+						</div>
+					</div>
+					<div class="rounded-[1.4rem] border border-youdian-accent/15 bg-orange-50/70 p-5">
+						<span class={kickerClass}>Now</span>
+						<strong class="mt-3 block text-[2.35rem] leading-none">{articles.length}</strong>
+						<span class="mt-2 block text-sm font-bold text-youdian-muted">篇已整理文章</span>
 					</div>
 				</div>
 			</section>
 
-			<section class="grid gap-8 pt-12" aria-labelledby="featured-title">
-				<div class="max-w-[42rem]">
+			<section class="grid gap-7 pt-12" aria-labelledby="featured-title">
+				<div class="max-w-[38rem]">
 					<p class={eyebrowClass}>Start Reading</p>
 					<h2 id="featured-title" class="m-0 text-[clamp(1.8rem,5vw,2.6rem)] leading-[1.15]">
 						从这些故事开始
@@ -97,8 +104,11 @@ const primaryArticle = featuredArticles[0];
 				<div class="grid gap-4 sm:grid-cols-2">
 					{featuredArticles.map((article) => (
 						<a class={articleCardClass} href={`${base}${article.href}`}>
-							<span class={kickerClass}>{article.category}</span>
-							<strong class="text-xl">{article.title}</strong>
+							<div class="flex items-center justify-between gap-3">
+								<span class={kickerClass}>{article.category}</span>
+								<span class="text-lg text-youdian-accent">→</span>
+							</div>
+							<strong class="text-[1.35rem] leading-[1.25]">{article.title}</strong>
 							<small class="text-[0.95rem] leading-[1.65] text-youdian-muted">
 								{article.description}
 							</small>
@@ -109,8 +119,8 @@ const primaryArticle = featuredArticles[0];
 					))}
 				</div>
 
-				<div class="grid gap-3 rounded-3xl border border-youdian-ink/10 bg-white/55 p-5">
-					<h2 class="m-0 text-xl">文章栏目</h2>
+				<div class="grid gap-3 rounded-[1.5rem] border border-youdian-ink/10 bg-white/55 p-5">
+					<h2 class="m-0 text-xl leading-tight">文章栏目</h2>
 					{articleSections.map((section) => (
 						<p class="m-0 leading-[1.75] text-youdian-muted">
 							<strong class="text-youdian-ink">{section.title}</strong>

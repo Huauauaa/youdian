@@ -41,34 +41,34 @@ export default function ReactStoryPage({ base = "/" }) {
 	);
 
 	return (
-		<main className="mx-auto box-border w-full max-w-[68rem] px-5 pt-12 pb-20">
+		<main className="mx-auto box-border w-full max-w-[62rem] px-5 pt-7 pb-16">
 			<nav
-				className="mb-14 flex flex-wrap items-center justify-between gap-4"
+				className="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-full border border-youdian-ink/10 bg-white/55 px-4 py-3 shadow-[0_0.75rem_2rem_rgba(23,32,51,0.05)] backdrop-blur"
 				aria-label="React + TailwindCSS 页面导航"
 			>
 				<a
-					className="font-bold text-youdian-accent no-underline hover:underline focus-visible:underline"
+					className="font-bold text-youdian-accent no-underline transition hover:text-youdian-rust focus-visible:text-youdian-rust"
 					href={base}
 				>
 					← 返回首页
 				</a>
-				<span className="rounded-full border border-youdian-ink/10 bg-white/70 px-4 py-2 text-sm font-bold text-youdian-muted">
+				<span className="rounded-full bg-orange-50 px-3 py-1 text-sm font-bold text-youdian-rust">
 					React + TailwindCSS
 				</span>
 			</nav>
 
-			<section className="grid items-center gap-8 rounded-[2rem] border border-youdian-ink/10 bg-white/75 p-[clamp(1.5rem,5vw,3.5rem)] shadow-[0_1rem_3rem_rgba(23,32,51,0.08)] md:grid-cols-[1.1fr_0.9fr]">
+			<section className="grid items-center gap-8 rounded-[2rem] border border-youdian-ink/10 bg-white/70 p-[clamp(1.4rem,5vw,3.5rem)] shadow-[0_1.5rem_4rem_rgba(23,32,51,0.08)] md:grid-cols-[1.1fr_0.9fr]">
 				<div>
 					<p className="mb-4 text-[0.78rem] font-extrabold uppercase tracking-[0.2em] text-youdian-accent">
 						React + TailwindCSS Page
 					</p>
-					<h1 className="m-0 text-[clamp(2.5rem,7vw,5rem)] leading-[1.08]">
+					<h1 className="m-0 text-[clamp(2.4rem,7vw,4.8rem)] font-extrabold leading-[1.06] tracking-[-0.04em]">
 						用统一的 React 组件组织互动故事页
 					</h1>
 					<p className="my-6 max-w-[38rem] text-[1.08rem] leading-[1.85] text-youdian-muted">
 						这个页面统一由 React 组件渲染，所有界面状态和视觉样式都通过 React 状态与 TailwindCSS 工具类组合完成。
 					</p>
-					<p className="inline-flex rounded-full bg-orange-50 px-4 py-2 text-sm font-bold text-youdian-rust">
+					<p className="inline-flex rounded-full border border-youdian-accent/15 bg-orange-50 px-4 py-2 text-sm font-bold text-youdian-rust">
 						{summary}
 					</p>
 				</div>
@@ -81,10 +81,10 @@ export default function ReactStoryPage({ base = "/" }) {
 							<button
 								type="button"
 								key={panel.title}
-								className={`rounded-2xl border p-4 text-left transition ${
+								className={`rounded-2xl border p-4 text-left transition hover:-translate-y-0.5 focus-visible:-translate-y-0.5 ${
 									isActive
 										? "border-youdian-accent bg-orange-50 shadow-[0_0.8rem_2rem_rgba(180,83,9,0.12)]"
-										: "border-youdian-ink/10 bg-white/70 hover:border-youdian-accent/50"
+										: "border-youdian-ink/10 bg-white/70 hover:border-youdian-accent/50 focus-visible:border-youdian-accent/50"
 								}`}
 								onClick={() => setActiveIndex(index)}
 							>
@@ -104,14 +104,14 @@ export default function ReactStoryPage({ base = "/" }) {
 				className="mt-8 grid gap-5 md:grid-cols-[0.95fr_1.05fr]"
 				aria-live="polite"
 			>
-				<div className="rounded-[1.5rem] border border-youdian-ink/10 bg-white/65 p-6">
+				<div className="rounded-[1.5rem] border border-youdian-ink/10 bg-white/65 p-6 shadow-[0_1rem_2.5rem_rgba(23,32,51,0.06)]">
 					<p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-youdian-accent">
 						当前主题
 					</p>
 					<h2 className="m-0 text-2xl">{activePanel.title}</h2>
 					<p className="mb-0 leading-[1.8] text-youdian-muted">{activePanel.detail}</p>
 				</div>
-				<div className="rounded-[1.5rem] border border-youdian-accent/20 bg-orange-50 p-6">
+				<div className="rounded-[1.5rem] border border-youdian-accent/20 bg-orange-50/90 p-6 shadow-[0_1rem_2.5rem_rgba(180,83,9,0.08)]">
 					<p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-youdian-accent">
 						当前时刻
 					</p>
@@ -121,7 +121,7 @@ export default function ReactStoryPage({ base = "/" }) {
 			</section>
 
 			<section
-				className="mt-8 rounded-[1.5rem] border border-youdian-ink/10 bg-white/65 p-6"
+				className="mt-8 rounded-[1.5rem] border border-youdian-ink/10 bg-white/65 p-6 shadow-[0_1rem_2.5rem_rgba(23,32,51,0.06)]"
 				aria-labelledby="daily-moments-title"
 			>
 				<div className="mb-5 max-w-[40rem]">
@@ -140,10 +140,10 @@ export default function ReactStoryPage({ base = "/" }) {
 							<button
 								type="button"
 								key={moment.title}
-								className={`rounded-2xl border p-4 text-left transition ${
+								className={`rounded-2xl border p-4 text-left transition hover:-translate-y-0.5 focus-visible:-translate-y-0.5 ${
 									isActive
 										? "border-youdian-accent bg-youdian-accent text-youdian-paper shadow-[0_0.8rem_2rem_rgba(180,83,9,0.16)]"
-										: "border-youdian-ink/10 bg-white/70 text-youdian-ink hover:border-youdian-accent/50"
+										: "border-youdian-ink/10 bg-white/70 text-youdian-ink hover:border-youdian-accent/50 focus-visible:border-youdian-accent/50"
 								}`}
 								onClick={() => setActiveMomentIndex(index)}
 							>
