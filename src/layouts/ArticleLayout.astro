@@ -8,9 +8,9 @@ const description = frontmatter.description ?? "游殿村故事文章";
 const category = frontmatter.category ?? "游殿村故事";
 const status = frontmatter.status ?? null;
 const pageBackgroundClass =
-	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(180,83,9,0.1),transparent_30rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
+	"min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(66,184,131,0.12),transparent_30rem),linear-gradient(180deg,#fffaf0_0%,#f8f1e3_100%)] font-sans text-youdian-ink";
 const backLinkClass =
-	"inline-flex font-bold text-youdian-accent no-underline transition hover:text-youdian-rust focus-visible:text-youdian-rust";
+	"inline-flex font-bold text-youdian-leaf-dark no-underline transition hover:text-youdian-ink focus-visible:text-youdian-ink";
 const badgeClass =
 	"status-badge font-bold text-gray-500";
 const publishedDate = frontmatter.pubDate
@@ -31,14 +31,14 @@ const publishedDate = frontmatter.pubDate
 		<title>{title} | 游殿村故事</title>
 	</head>
 	<body class={pageBackgroundClass}>
-		<main class="mx-auto box-border w-full max-w-[52rem] px-5 pt-7 pb-16">
-			<nav class="mb-8 flex flex-wrap justify-between gap-4 rounded-full border border-youdian-ink/10 bg-white/55 px-4 py-3 shadow-[0_0.75rem_2rem_rgba(23,32,51,0.05)] backdrop-blur" aria-label="文章导航">
+		<main class="mx-auto box-border w-full max-w-[52rem] px-5 pt-5 pb-16">
+			<nav class="mb-10 flex flex-wrap justify-between gap-4 border-b border-youdian-ink/10 py-4" aria-label="文章导航">
 				<a class={backLinkClass} href={import.meta.env.BASE_URL}>← 返回首页</a>
 				<a class={backLinkClass} href={`${import.meta.env.BASE_URL}articles/`}>文章目录</a>
 			</nav>
-			<article class="overflow-hidden rounded-[2rem] border border-youdian-ink/10 bg-white/80 shadow-[0_1.5rem_4rem_rgba(23,32,51,0.09)]">
-				<header class="border-b border-youdian-ink/10 bg-white/70 p-[clamp(1.5rem,5vw,3rem)]">
-					<p class="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-youdian-accent">
+			<article class="overflow-hidden rounded-[1.6rem] border border-youdian-ink/10 bg-white/80 shadow-[0_1.5rem_4rem_rgba(23,32,51,0.08)]">
+				<header class="border-b border-youdian-ink/10 bg-white/75 p-[clamp(1.5rem,5vw,3rem)]">
+					<p class="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-youdian-leaf-dark">
 						{category}
 					</p>
 					<h1 class="m-0 text-[clamp(2.15rem,8vw,4.3rem)] font-extrabold leading-[1.08] tracking-[-0.04em]">{title}</h1>
