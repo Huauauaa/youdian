@@ -37,6 +37,15 @@ export const articleSections: ArticleSection[] = [
 				status: "已发布",
 				pubDate: "2026-05-15",
 			},
+			{
+				title: "柏树干娘",
+				description:
+					"沐沐问起腿上的疤——生日那天在村路上被恶狗所咬，县医院久不见好，邻床一句算命，又把我领到村头那棵柏树下认了干娘。",
+				href: "articles/bahen/",
+				category: "人和日子",
+				status: "已发布",
+				pubDate: "2026-05-16",
+			},
 		],
 	},
 ];
