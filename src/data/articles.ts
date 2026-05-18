@@ -46,6 +46,15 @@ export const articleSections: ArticleSection[] = [
 				status: "已发布",
 				pubDate: "2026-05-16",
 			},
+			{
+				title: "爷爷的爱好",
+				description:
+					"相骡子、下棋、写毛笔字——爷爷几样爱好里，相人看得准，棋下得静，字写得全村过年都等着他动笔。",
+				href: "articles/yeye/",
+				category: "人和日子",
+				status: "已发布",
+				pubDate: "2026-05-17",
+			},
 		],
 	},
 ];
